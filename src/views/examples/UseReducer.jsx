@@ -14,6 +14,14 @@ function reducer(state, action) {
       return { ...state, number: state.number + 2 };
     case "login":
       return { ...state, user: { name: action.payload } };
+    case "mult7":
+      return { ...state, number: state.number * 7 };
+    case "div25":
+      return { ...state, number: state.number / 25 };
+    case "int":
+      return { ...state, number: parseInt(state.number) };
+    case "random":
+      return { ...state, number: state.number + action.payload};
     default:
       return state;
   }
@@ -36,11 +44,32 @@ const UseReducer = (props) => {
         )}
         <span className="text">{state.number}</span>
         <div>
-          <button className="btn" onClick={() => dispatch({ type: "numberAdd2" })}>
+          <button
+            className="btn"
+            onClick={() => dispatch({ type: "numberAdd2" })}
+          >
             +2
           </button>
-          <button className="btn" onClick={() => dispatch({ type: "login", payload: 'Bianca' })}>
+          <button
+            className="btn"
+            onClick={() => dispatch({ type: "login", payload: "Bianca" })}
+          >
             User
+          </button>
+          <button className="btn" onClick={() => dispatch({ type: "mult7" })}>
+            *7
+          </button>
+          <button className="btn" onClick={() => dispatch({ type: "div25" })}>
+            /25
+          </button>
+          <button className="btn" onClick={() => dispatch({ type: "int" })}>
+            inteiro
+          </button>
+          <button className="btn" onClick={() => dispatch({ type: "random", payload: -9})}>
+            -9
+          </button>
+          <button className="btn" onClick={() => dispatch({ type: "random", payload: +11})}>
+            +11
           </button>
         </div>
       </div>
